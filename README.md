@@ -36,15 +36,15 @@ Contributions are elcome ! If you want to add a method or improve them existing 
 ```bash
 git checkout -b feature/newfeature
 ```
-5. Commit your change
+3. Commit your change
 ```bash
 git commit -m "feat : add feature"
 ```
-7. Pushez to branch
+4. Push to branch
 ```bash
 git push origin feature/newfeature
 ```
-8. Open Pull request
+5. Open Pull request
 
 ### Contact
 **TifaniohMF**- [Profil Github](https://github.com/TifaniohMF)
