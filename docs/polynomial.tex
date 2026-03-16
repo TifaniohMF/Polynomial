@@ -1,0 +1,26 @@
+\documentclass[a4paper, 12pt]{article}
+
+% ===== IMPORT PACKAGES =====
+
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{lmodern}
+\usepackage{babel}
+
+\renewcommand{\familydefault}{\sfdefault}
+
+\date{\today}
+\author{RANDRIANOELINA Tifanioh Mahefa Fandresentsoa}
+\title{POLYNOMIAL}
+
+\begin{document}
+\maketitle
+\section*{Karatsuba algorithm}
+We recall that a polynomial $P$ is the form $P(X) = a_{0} + a_{1} X + \cdots + a_{n} X^{n} = \sum_{i=0}^{n} a_{i}X^{i}$\\
+If $P = \sum_{i=0}^{n} a_{i}X^{i}$ and $Q = \sum_{i=0}^{n} b_{i}X^{i}$\\
+Calculate $R = P + Q$ is easy because the addition of the polynomials amounts to the addition 2 to 2 of the coefficients of the same rank. We have thus $$P + Q = (a_{0}+b_{0}) + (a_{1}+b_{1})X + \cdots + (a_{n}+b_{n})X^{n}$$
+We can therefore calculate in $O(n)$ making a simpe loop. The mulptiplication is more complicated if e develop the first term. We have $$PQ = a_{0}b_{0}+ (a_{0}b_{1}+a_{1}b_{0})X + \cdots + a_{n}b_{n}X^{n}$$
+The general formula for $k$-eme coefficient $C_{k}$ of $PQ$ is $C_{k} = \sum_{i,j=k} a_{i}b_{j}$. If we implement this rule as an algorithm, we get a complexity $O(n^{2})$. The goal is to get faster multiplication. For this, we begin to decompose $P$ and $Q$ in 2 polynomial. We write $P = R X^{\frac{n}{2}}+S; \; Q = T X^{\frac{n}{2}}+U$ or $R, S, T,$ and $U$ are size polynomial $\frac{n}{2}$. We can multiply the 2 expression and we get $$PQ = RTX^{n} + (RU + ST)X^{\frac{n}{2}} + SU.$$
+We can make all 4 products $RT, RU, ST,$ and $SU$ recursively then it is recombined in linear time. We are in typical case od dividing to reign with the parameters $a=4, b= 2$ and $d=1$. If we apply the fundamental theorem, e have a complexity $O(n^{2})$. To improve this complexity Karatsuba noticed that $$PQ = RTX^{n} + ((R+S)(T+U) - (RT + SU))X^{\frac{n}{2}} + SU$$
+We notice that e have more that 3 product to make $RT, SU$ and $(R+S)(T+U)$. The rest is done in linear time, so e have the parameter $a = 3, b = 2,$ and $d=1$. By applying the fundamental theorem we have a complexity $O(n^{log_{2}3}) = O(n^{1,585})$.\\ We gained significanly in efficiency.
+\end{document}
